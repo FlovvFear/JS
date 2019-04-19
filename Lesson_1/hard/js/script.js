@@ -2,17 +2,10 @@
 
 let num = 33721;
 
-function getMultNumber(num) {
-  let mult = 1, tmp;
-  while (num) {
-    tmp = num % 10;
-    num = (num - tmp) / 10;
-    mult = mult*tmp;
-  }
-  return mult;
-}
+const arr = String(num).split("");
+const reducer = (accumulator, currentValue) => accumulator * currentValue;
 
-let res_1 = getMultNumber(num);
+let res_1 = arr.reduce(reducer);
 
 alert("Произведение цифр: " + res_1);
 
@@ -21,3 +14,18 @@ let res_2 = res_1**3;
 alert("Возведение в 3 степень: " + res_2);
 
 alert("Первые две цифры: " + res_2.toString().split('', 2).join(''));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
