@@ -1,9 +1,12 @@
 'use strict';
 
 let money = prompt("Ваш бюджет на месяц?", ""),
-  time = prompt("Введите дату в формате YYYY-MM-DD", "");
-
-let appData = {
+  time = prompt("Введите дату в формате YYYY-MM-DD", ""),
+  costs = prompt("Введите обязательную статью расходов в этом месяце", ""),
+  howMuch = prompt("Во сколько обойдется?", ""),
+  optionalCosts = prompt("Введите необязательную статью расходов в этом месяце", ""),
+  optionalCowMuch = prompt("Во сколько обойдется?", ""),
+  appData = {
   budget: money,
   timeData: time,
   expenses: {},
@@ -11,9 +14,6 @@ let appData = {
   income: [],
   savings: false
 };
-
-let costs = prompt("Введите обязательную статью расходов в этом месяце", ""),
-  howMuch = prompt("Во сколько обойдется?", "");
 
 appData.expenses[costs] = howMuch;
 
