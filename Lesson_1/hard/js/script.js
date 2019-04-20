@@ -15,6 +15,7 @@ alert("Возведение в 3 степень: " + res_2);
 
 alert("Первые две цифры: " + res_2.toString().split('', 2).join(''));
 
+alert( (a.toString().split('').reduce( (a,b) => a * b) ** 3).toString().slice(0,2));
 
 
 
