@@ -11,7 +11,7 @@ function start() {
   }
 }
 
-// start();
+start();
 
 let  appData = {
   budget: money,
@@ -37,7 +37,7 @@ function chooseExpenses() {
   }
 }
 
-// chooseExpenses();
+chooseExpenses();
 
 function chooseOptExpenses() {
   for (let i = 0; i < 3; i++) {
