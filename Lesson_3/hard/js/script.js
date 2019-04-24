@@ -1,14 +1,10 @@
 let str = "урок-3-был слишком легким";
-  str = str[0].toUpperCase() + str.slice(1);
-  
-let mass = str.split("");
-for(let i = 0; i < mass.length; i++) {
-  if (mass[i] == "-") {
-    mass[i] = " ";
-  }
-}
 
-str = mass.join("");
+str = str[0].toUpperCase() + str.slice(1);
+
+str = str.replace(/-/g, " ");
+
+
 console.log(str);
 console.log(str.slice(str.indexOf("легким")).slice(0, -2) + "оо");
 
