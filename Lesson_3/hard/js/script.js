@@ -1,19 +1,17 @@
-let str = "урок-3-был слишком легким",
-  newStr = str[0].toUpperCase() + str.slice(1);
-
-console.log(newStr);
-
-let mass = newStr.split("");
+let str = "урок-3-был слишком легким";
+  str = str[0].toUpperCase() + str.slice(1);
+  
+let mass = str.split("");
 for(let i = 0; i < mass.length; i++) {
   if (mass[i] == "-") {
     mass[i] = " ";
   }
 }
 
-newStr = mass.join("");
-console.log(newStr);
+str = mass.join("");
+console.log(str);
+console.log(str.slice(str.indexOf("легким")).slice(0, -2) + "оо");
 
-console.log(newStr.replace("легким", "легкоо"));
 
 let arr = [20, 33, 1, "Человек", 2, 3];
 let sum = 0;
