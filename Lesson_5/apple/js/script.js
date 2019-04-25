@@ -17,7 +17,8 @@ newMenuItem.textContent = 'Пятый пункт';
 let a = title.textContent;
 title.textContent = a.slice(0, a.indexOf('технику')) + 'подлинную ' + a.slice(a.indexOf('технику'));
 
-document.body.style.backgroundImage = 'url(../img/apple_true.jpg)';
+document.body.style.backgroundImage = 'url(img/apple_true.jpg)';
+
 columns[1].removeChild(adv);
 
 let ans;
