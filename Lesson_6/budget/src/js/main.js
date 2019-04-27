@@ -58,11 +58,11 @@ expensesInputs.forEach(function(item, i, array) {
   });
 });
 
-optExpensesInputs.forEach(function(item, i, array) {
+optExpensesInputs.forEach(function(item) {
   
   item.addEventListener('input', function() {
 
-    if ((array[0].value != "" || array[1].value != "") || (array[2].value != "")) {
+    if ((item.value != "")) {
 
       optExpensesBtn.disabled = false;
     } else {
@@ -117,6 +117,7 @@ expensesBtn.addEventListener('click', function() {
 });
 
 optExpensesBtn.addEventListener('click', function() {
+  optionalExpensesValue.textContent = "";
   
   for (let i = 0; i < optExpensesInputs.length; i++) {
     let a = optExpensesInputs[i].value;
@@ -124,9 +125,7 @@ optExpensesBtn.addEventListener('click', function() {
     if (typeof(a) === 'string' && typeof(a) != null && a != '' && a.length < 50) {
       appData.optionalExpenses[i+1] = a;
       optionalExpensesValue.textContent += a + " "; 
-    } else {
-      --i;
-    }
+    } 
   }
 });
 
