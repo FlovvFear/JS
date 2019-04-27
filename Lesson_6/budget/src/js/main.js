@@ -20,7 +20,8 @@ let startBtn = document.querySelector('#start'),
   percentInput = document.querySelector('#percent'),
   yearInput = document.querySelector('.year input'),
   monthInput = document.querySelector('.month input'),
-  dayInput = document.querySelector('.day input');
+  dayInput = document.querySelector('.day input'),
+  allInputs = document.querySelectorAll('input');
 
 let money, time;
 
@@ -33,17 +34,48 @@ let  appData = {
   savings: false
 }; 
 
+expensesBtn.disabled = true;
+optExpensesBtn.disabled = true;
+countBtn.disabled = true;
 
 
-
-expensesBtn.addEventListener('mouseover', function() {
-  expensesBtn.setAttribute('disabled','');
+allInputs.forEach(function(item) {
+  item.disabled = true;
 });
 
-expensesBtn.addEventListener('mouseout', function() {
-  expensesBtn.removeAttribute('disabled');
+expensesInputs.forEach(function(item, i, array) {
+  
+  item.addEventListener('input', function() {
 
+    if ((array[0].value != "" && array[1].value != "") 
+    || (array[2].value != "" && array[3].value != "")) {
+
+      expensesBtn.disabled = false;
+    } else {
+
+      expensesBtn.disabled = true;
+    }
+  });
 });
+
+optExpensesInputs.forEach(function(item, i, array) {
+  
+  item.addEventListener('input', function() {
+
+    if ((array[0].value != "" || array[1].value != "") || (array[2].value != "")) {
+
+      optExpensesBtn.disabled = false;
+    } else {
+
+      optExpensesBtn.disabled = true;
+    }
+  });
+});
+
+
+
+
+
 
 startBtn.addEventListener('click', function() {
 
@@ -60,6 +92,12 @@ startBtn.addEventListener('click', function() {
   yearInput.value = new Date(Date.parse(time)).getFullYear();
   monthInput.value = new Date(Date.parse(time)).getMonth() + 1;
   dayInput.value = new Date(Date.parse(time)).getDate();
+  countBtn.disabled = false;
+  allInputs.forEach(function(item) {
+    item.disabled = false;
+  });
+  sumInput.disabled = true;
+  percentInput.disabled = true;
 });
 
 expensesBtn.addEventListener('click', function() {
@@ -73,9 +111,7 @@ expensesBtn.addEventListener('click', function() {
     if (typeof(a) === 'string' && typeof(a) != null && typeof(b) != null && a != '' && b != '' && a.length < 50) {
       appData.expenses[a] = b;
       sum += +b;
-    } else {
-      --i;
-    }
+    } 
   }
   expensesValue.textContent = sum;
 });
@@ -96,9 +132,9 @@ optExpensesBtn.addEventListener('click', function() {
 
 countBtn.addEventListener('click', function() {
 
-  if (appData.budget != undefined) {
+  if (expensesValue.textContent != "") {
 
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    appData.moneyPerDay = ((appData.budget - +expensesValue.textContent) / 30).toFixed();
     dayBudgetValue.textContent = appData.moneyPerDay;
   
     if (appData.moneyPerDay < 100) {
@@ -113,7 +149,7 @@ countBtn.addEventListener('click', function() {
       levelValue.textContent = "Что то пошло не так";
     }
   } else {
-    dayBudgetValue.textContent = "Что то пошло не так";
+    dayBudgetValue.textContent = "Укажите обяз. расходы";
 
   }
   
@@ -131,10 +167,16 @@ incomeInput.addEventListener('input', function() {
 savingsCheckbox.addEventListener('click', function(){
   if (appData.savings == false) {
     appData.savings = true;
+    sumInput.disabled = false;
+    percentInput.disabled = false;
   } else {
     appData.savings = false;
+    sumInput.disabled = true;
+    percentInput.disabled = true;
   }
 });
+
+
 
 sumInput.addEventListener('input', function() {
   if (appData.savings == true) {
