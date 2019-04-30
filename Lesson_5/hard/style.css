@@ -1,0 +1,16 @@
+.container {
+  width: 1140px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.bold {
+  font-weight: bold;
+  color: red;
+}
